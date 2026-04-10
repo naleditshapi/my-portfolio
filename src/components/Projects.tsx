@@ -61,7 +61,7 @@ const PROJECTS = [
     demo: 'https://bug-tracker-demo.netlify.app',
     emoji: '🐛',
   },
-];
+] as const;
 
 const FILTERS = ['All', 'Systems', 'Data', 'QA'];
 
@@ -69,9 +69,11 @@ const CATEGORY_COLORS = {
   Systems: 'bg-indigo-100 text-indigo-700',
   Data: 'bg-purple-100 text-purple-700',
   QA: 'bg-teal-100 text-teal-700',
-};
+} as const;
 
-function ProjectCard({ project }) {
+type Project = typeof PROJECTS[number];
+
+function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col">
       {/* Emoji banner */}
@@ -90,7 +92,7 @@ function ProjectCard({ project }) {
         <p className="text-gray-500 text-sm leading-relaxed mb-4 flex-1">{project.description}</p>
         {/* Tech stack */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {project.tech.map((t) => (
+          {project.tech.map((t: string) => (
             <span key={t} className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-md font-mono">
               {t}
             </span>

@@ -1,10 +1,10 @@
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
+import Hero from './components/Hero.tsx';
 import About from './components/About';
-import Skills from './components/Skills';
+import Skills from './components/Skills.tsx';
 import Projects from './components/Projects';
 import Resume from './components/Resume';
-import Testimonials from './components/Testimonials';
+import Testimonials from './components/Testimonials.tsx';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 

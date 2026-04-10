@@ -1,4 +1,3 @@
-// Skill categories with proficiency levels (0-100)
 const SKILL_CATEGORIES = [
   {
     title: 'Technical Skills',
@@ -36,7 +35,7 @@ const SKILL_CATEGORIES = [
       { name: 'Git & GitHub', level: 75 },
     ],
   },
-];
+] as const;
 
 // Color maps for Tailwind classes
 const COLOR_MAP = {
@@ -55,9 +54,15 @@ const COLOR_MAP = {
     badge: 'bg-teal-100 text-teal-700',
     header: 'bg-teal-600',
   },
+} as const;
+
+type SkillBarProps = {
+  name: string;
+  level: number;
+  barClass: string;
 };
 
-function SkillBar({ name, level, barClass }) {
+function SkillBar({ name, level, barClass }: SkillBarProps) {
   return (
     <div className="mb-4">
       <div className="flex justify-between text-sm mb-1">
@@ -74,7 +79,9 @@ function SkillBar({ name, level, barClass }) {
   );
 }
 
-function SkillCard({ category }) {
+type SkillCategory = typeof SKILL_CATEGORIES[number];
+
+function SkillCard({ category }: { category: SkillCategory }) {
   const colors = COLOR_MAP[category.color];
   return (
     <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
@@ -85,7 +92,7 @@ function SkillCard({ category }) {
       </div>
       {/* Skills list */}
       <div className="px-6 py-6">
-        {category.skills.map((skill) => (
+        {category.skills.map((skill: { name: string; level: number }) => (
           <SkillBar key={skill.name} name={skill.name} level={skill.level} barClass={colors.bar} />
         ))}
       </div>
