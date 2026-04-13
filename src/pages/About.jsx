@@ -1,5 +1,5 @@
 import PageHeader from '../components/PageHeader';
-import { useContent } from '../ContentContext';
+import { useContent } from '../hooks/useContent';
 
 function SkillBar({ name, level }) {
   return (

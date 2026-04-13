@@ -1,4 +1,4 @@
-import { useContent } from '../ContentContext';
+import { useContent } from '../hooks/useContent';
 
 export default function Footer() {
   const { content } = useContent();
@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <span className="text-burgundy-400 font-bold text-sm">{content.general.name}</span>
         <p className="text-gray-600 text-xs">
-          © {year} · Information Systems Portfolio
+          © {year} Naledi Tshapi's Portfolio
         </p>
         <div className="flex items-center gap-1.5 text-xs text-gray-600">
           <span className="w-1.5 h-1.5 rounded-full bg-burgundy-700" />

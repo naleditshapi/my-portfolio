@@ -1,4 +1,4 @@
-import { useContent } from './ContentContext';
+import { useContent } from '../hooks/useContent';
 
 export default function About() {
   const { content } = useContent();

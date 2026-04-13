@@ -1,14 +1,14 @@
 export const DEFAULT_CONTENT = {
   general: {
-    name: 'Your Name',
+    name: 'Naledi Tshapi',
     tagline: 'Final-Year Information Systems Student',
-    heroBio: 'Aspiring Business Analyst, QA Tester, and Systems Analyst with a passion for solving real-world problems through technology, data, and clear communication.',
-    roles: ['Business Analyst', 'QA Tester', 'Systems Analyst'],
-    email: 'youremail@example.com',
-    github: 'https://github.com/yourusername',
-    linkedin: 'https://linkedin.com/in/yourusername',
+    heroBio: 'Aspiring Software Developer, QA Tester, and Systems Analyst with a passion for solving real-world problems through technology, data, and clear communication.',
+    roles: ['Software Developer', 'QA Tester', 'Systems Analyst'],
+    email: 'ntshapi@outlook.com',
+    github: 'https://github.com/naleditshapi',
+    linkedin: 'https://linkedin.com/in/naleditshapi',
     location: 'Cape Town, South Africa',
-    availability: 'Available from Jan 2026',
+    availability: 'Availabllity Depends on the Opportunity — Let’s Connect!',
   },
   about: {
     paragraphs: [

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useContent } from './ContentContext';
+import { useContent } from '../hooks/useContent';
 
 const NAV_LINKS = [
     { label: 'About', to: '/about' },

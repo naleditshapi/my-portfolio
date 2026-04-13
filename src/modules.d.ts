@@ -1,11 +1,16 @@
+type ContentContextValue = {
+  content: {
+    general: { name: string };
+    [key: string]: any;
+  };
+  updateSection: (section: string, data: any) => void;
+  resetContent: () => void;
+};
+
 declare module "./ContentContext" {
   import type { ReactNode } from "react";
 
-  export type ContentContextValue = {
-    content: any;
-    updateSection: (section: string, data: any) => void;
-    resetContent: () => void;
-  };
+  export type { ContentContextValue };
 
   export function ContentProvider(props: { children: ReactNode }): ReactNode;
   export function useContent(): ContentContextValue;
@@ -14,13 +19,21 @@ declare module "./ContentContext" {
 declare module "../ContentContext" {
   import type { ReactNode } from "react";
 
-  export type ContentContextValue = {
-    content: any;
-    updateSection: (section: string, data: any) => void;
-    resetContent: () => void;
-  };
+  export type { ContentContextValue };
 
   export function ContentProvider(props: { children: ReactNode }): ReactNode;
+  export function useContent(): ContentContextValue;
+}
+
+declare module "./hooks/useContent" {
+  export type { ContentContextValue } from "./ContentContext";
+
+  export function useContent(): ContentContextValue;
+}
+
+declare module "../hooks/useContent" {
+  export type { ContentContextValue } from "../ContentContext";
+
   export function useContent(): ContentContextValue;
 }
 

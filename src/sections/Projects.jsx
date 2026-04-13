@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useContent } from './ContentContext';
+import { useContent } from '../hooks/useContent';
 
 const FILTERS = ['All', 'Systems', 'Data', 'QA'];
 

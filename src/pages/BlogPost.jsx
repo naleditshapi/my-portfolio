@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { useContent } from '../ContentContext';
+import { useContent } from '../hooks/useContent';
 
 export default function BlogPost() {
   const { id } = useParams();

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PageHeader from '../components/PageHeader';
-import { useContent } from '../ContentContext';
+import { useContent } from '../hooks/useContent';
 
 const FILTERS = ['All', 'Systems', 'Data', 'QA'];
 

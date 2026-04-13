@@ -1,11 +1,15 @@
+// src/context/ContentContext.jsx
 import { createContext, useContext, useState } from 'react';
-import { DEFAULT_CONTENT } from './content';
+import { DEFAULT_CONTENT } from '../data/content';
 
-const ContentContext = createContext({
+const defaultContextValue = {
   content: DEFAULT_CONTENT,
   updateSection: () => {},
   resetContent: () => {},
-});
+};
+
+// Export the context itself so useContent hook can access it
+export const ContentContext = createContext(defaultContextValue);
 
 function loadContent() {
   try {
@@ -49,5 +53,4 @@ export function ContentProvider({ children }) {
   );
 }
 
-export const useContent = () => useContext(ContentContext);
-
+export { useContent } from '../hooks/useContent';

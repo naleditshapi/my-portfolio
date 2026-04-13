@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useContent } from '../ContentContext';
+import { useContent } from '../hooks/useContent';
 
 function FeaturedProject({ project }) {
   return (
