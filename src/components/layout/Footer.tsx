@@ -1,4 +1,4 @@
-import { useContent } from '../hooks/useContent';
+import { useContent } from '../../hooks/useContent';
 
 export default function Footer() {
   const { content } = useContent();

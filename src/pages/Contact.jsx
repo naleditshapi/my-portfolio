@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import PageHeader from '../components/PageHeader';
+import PageHeader from '../components/layout/PageHeader';
 import { useContent } from '../hooks/useContent';
 
 export default function Contact() {

@@ -1,4 +1,5 @@
 import { useContent } from '../hooks/useContent';
+import PageHeader from '../layout/PageHeader';
 
 export default function About() {
   const { content } = useContent();
@@ -7,6 +8,11 @@ export default function About() {
   return (
     <section id="about" className="py-28 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
+
+        <PageHeader
+          title="About Me"
+          subtitle="Learn more about who I am and what I do"
+        />
 
         <div className="flex flex-col md:flex-row gap-20 items-start">
           {/* Left: heading + stats */}

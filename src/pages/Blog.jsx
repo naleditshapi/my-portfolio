@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import PageHeader from '../components/PageHeader';
+import PageHeader from '../components/layout/PageHeader';
 import { useContent } from '../hooks/useContent';
 
 function BlogCard({ post }) {

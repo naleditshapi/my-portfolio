@@ -2,8 +2,8 @@
 import { useState, lazy, Suspense } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { ContentProvider } from './context/ContentContext';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 import Admin from './Admin';
 
 // Eagerly loaded — Navbar and Footer appear on every page,

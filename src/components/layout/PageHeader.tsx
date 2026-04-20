@@ -1,4 +1,10 @@
-export default function PageHeader({ label, title, subtitle }) {
+interface PageHeaderProps {
+    label?: string;
+    title: string;
+    subtitle?: string;
+}
+
+export default function PageHeader({ label, title, subtitle }: PageHeaderProps) {
     return (
         <div className="pt-28 pb-14 bg-white border-b border-gray-100">
             <div className="max-w-6xl mx-auto px-6">
