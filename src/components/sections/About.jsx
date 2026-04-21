@@ -1,5 +1,6 @@
 import { useContent } from '../hooks/useContent';
 import PageHeader from '../layout/PageHeader';
+import Link from '../ui/Link';
 
 export default function About() {
   const { content } = useContent();
@@ -40,15 +41,14 @@ export default function About() {
               ))}
             </div>
             <div className="mt-8 pt-8 border-t border-gray-200">
-              <a
-                href="#contact"
+              <Link to="/contact"
                 className="inline-flex items-center gap-2 text-burgundy-800 font-medium text-sm hover:gap-3 transition-all duration-200"
               >
                 Let's connect
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

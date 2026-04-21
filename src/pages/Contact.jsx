@@ -15,7 +15,7 @@ export default function Contact() {
     setForm({ name: '', email: '', message: '' });
   };
 
-  const inputClass = "w-full bg-gray-50 border-0 rounded-xl px-4 py-3.5 text-sm text-gray-800 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-burgundy-300 transition";
+  const inputClass = "w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-gray-800 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-burgundy-400 focus:border-burgundy-400 transition";
 
   return (
     <div>
@@ -42,18 +42,18 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Name</label>
+                    <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Name</label>
                     <input name="name" type="text" required value={form.name} onChange={handleChange}
                       placeholder="Jane Smith" className={inputClass} />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Email</label>
+                    <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Email</label>
                     <input name="email" type="email" required value={form.email} onChange={handleChange}
                       placeholder="jane@company.com" className={inputClass} />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Message</label>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Message</label>
                   <textarea name="message" required rows={6} value={form.message} onChange={handleChange}
                     placeholder="Hi, I'd love to discuss an opportunity..." className={`${inputClass} resize-none`} />
                 </div>
@@ -68,7 +68,7 @@ export default function Contact() {
           {/* Info sidebar */}
           <div className="lg:w-72 space-y-10">
             <div>
-              <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-[0.15em] mb-5">Find Me Online</h3>
+              <h3 className="text-xs font-semibold text-gray-700 uppercase tracking-[0.15em] mb-5">Find Me Online</h3>
               <div className="flex gap-3">
                 <a href={linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
                   className="w-10 h-10 bg-white rounded-xl border border-gray-100 flex items-center justify-center text-gray-400 hover:text-burgundy-700 hover:border-burgundy-200 transition-all">

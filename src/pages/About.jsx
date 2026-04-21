@@ -1,12 +1,20 @@
 import PageHeader from '../components/layout/PageHeader';
 import { useContent } from '../hooks/useContent';
 
+function levelToLabel(level) {
+  const value = Number(level);
+  if (!Number.isFinite(value)) return 'Beginner';
+  if (value >= 80) return 'Advanced';
+  if (value >= 60) return 'Intermediate';
+  return 'Beginner';
+}
+
 function SkillBar({ name, level }) {
   return (
     <div className="mb-5">
       <div className="flex justify-between items-center mb-2">
         <span className="text-sm font-medium text-gray-700">{name}</span>
-        <span className="text-xs text-gray-400 tabular-nums">{level}%</span>
+        <span className="text-xs text-gray-400">{levelToLabel(level)}</span>
       </div>
       <div className="w-full bg-gray-100 rounded-full h-1.5">
         <div className="bg-burgundy-700 h-1.5 rounded-full" style={{ width: `${level}%` }} />

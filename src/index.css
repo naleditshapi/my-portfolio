@@ -17,6 +17,26 @@ html {
   animation: fadeIn 0.7s ease-out forwards;
 }
 
+@keyframes blinkCaret {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.typewriter-caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 1em;
+  margin-left: 0.08em;
+  vertical-align: -0.08em;
+  background: currentColor;
+  animation: blinkCaret 1s steps(1, end) infinite;
+}
+
+.typewriter-caret-subtle {
+  opacity: 0.35;
+  animation: none;
+}
+
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #f9fafb; }
 ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 99px; }

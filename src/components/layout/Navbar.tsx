@@ -31,27 +31,35 @@ export default function Navbar({ onAdminTrigger }: NavbarProps) {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    const handleLogoClick = () => {
+    const handleLogoClick = (event?: React.MouseEvent<HTMLAnchorElement>) => {
         clickCount.current += 1;
         if (clickTimer.current) clearTimeout(clickTimer.current);
         if (clickCount.current >= 5) {
             clickCount.current = 0;
             onAdminTrigger();
+            event?.preventDefault();
         } else {
             clickTimer.current = setTimeout(() => { clickCount.current = 0; }, 1500);
         }
     };
 
-    const firstName = content.general.name.split(' ')[0] || 'Portfolio';
+    const rawName = (content?.general?.name ?? '').trim();
+    const nameParts = rawName.split(/\s+/).filter(Boolean);
+    const firstName = nameParts[0];
+    const lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : '';
+    const brandName = (firstName ? `${firstName}${lastName}` : 'NalediTshapi');
 
     return (
         <nav className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${scrolled ? 'border-b border-gray-100 shadow-sm' : ''}`}>
             <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-                <button onClick={handleLogoClick} className="focus:outline-none select-none">
-                    <Link to="/" className="text-burgundy-800 font-bold text-lg tracking-tight hover:text-burgundy-600 transition-colors duration-200">
-                        {firstName}
-                    </Link>
-                </button>
+                <Link
+                    to="/"
+                    onClick={handleLogoClick}
+                    className="text-burgundy-800 font-bold text-lg tracking-tight hover:text-burgundy-600 transition-colors duration-200 focus:outline-none select-none"
+                    aria-label="Home"
+                >
+                    {`<${brandName}/>`}
+                </Link>
 
                 <ul className="hidden md:flex items-center gap-7">
                     {NAV_LINKS.map((link) => (
@@ -74,7 +82,7 @@ export default function Navbar({ onAdminTrigger }: NavbarProps) {
                     </li>
                 </ul>
 
-                <button onClick={() => setMenuOpen(!menuOpen)}
+                <button onClick={() => setMenuOpen((open) => !open)}
                     className="md:hidden text-gray-600 focus:outline-none" aria-label="Toggle menu">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         {menuOpen

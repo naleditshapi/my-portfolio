@@ -32,7 +32,7 @@ function FeaturedProject({ project }) {
       aria-label={hasCaseStudy ? `Open case study for ${project.title}` : undefined}
     >
       <div className="flex items-start justify-between gap-3 mb-4">
-        <span className="text-3xl">{project.emoji}</span>
+        <img src={project.logo} alt={`${project.title} logo`} className="w-10 h-10 object-contain" />
         <span className="text-xs font-semibold px-3 py-1 rounded-full bg-burgundy-50 text-burgundy-700">
           {project.category}
         </span>

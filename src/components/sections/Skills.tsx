@@ -62,12 +62,19 @@ type SkillBarProps = {
   barClass: string;
 };
 
+function levelToLabel(level: number): 'Beginner' | 'Intermediate' | 'Advanced' {
+  if (!Number.isFinite(level)) return 'Beginner';
+  if (level >= 80) return 'Advanced';
+  if (level >= 60) return 'Intermediate';
+  return 'Beginner';
+}
+
 function SkillBar({ name, level, barClass }: SkillBarProps) {
   return (
     <div className="mb-4">
       <div className="flex justify-between text-sm mb-1">
         <span className="text-gray-700 font-medium">{name}</span>
-        <span className="text-gray-400">{level}%</span>
+        <span className="text-gray-400">{levelToLabel(level)}</span>
       </div>
       <div className="w-full bg-gray-100 rounded-full h-2">
         <div

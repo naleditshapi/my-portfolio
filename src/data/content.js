@@ -66,7 +66,7 @@ export const DEFAULT_CONTENT = {
       tech: ['Python', 'SQLite', 'Tkinter'],
       github: 'https://github.com/yourusername/inventory-system',
       demo: '',
-      emoji: '📦',
+      logo: '/src/assets/react.svg', // Placeholder logo
       featured: true,
 
       // NEW: Case Study Fields
@@ -219,7 +219,7 @@ export const DEFAULT_CONTENT = {
       tech: ['Power BI', 'Excel', 'SQL'],
       github: '',
       demo: 'https://yourname-dashboard.netlify.app',
-      emoji: '📊',
+      logo: '/src/assets/react.svg', // Placeholder logo
       featured: true,
       caseStudy: {
         problem: {
@@ -324,7 +324,7 @@ export const DEFAULT_CONTENT = {
       tech: ['Selenium', 'Python', 'Jira'],
       github: 'https://github.com/yourusername/ecommerce-qa',
       demo: '',
-      emoji: '🧪',
+      logo: '/src/assets/react.svg', // Placeholder logo
       featured: true,
       caseStudy: {
         problem: {
@@ -429,7 +429,7 @@ export const DEFAULT_CONTENT = {
       tech: ['React', 'Node.js', 'MySQL'],
       github: 'https://github.com/yourusername/course-portal',
       demo: 'https://course-portal-demo.vercel.app',
-      emoji: '🎓',
+      logo: '/src/assets/react.svg', // Placeholder logo
       featured: false,
       caseStudy: {
         problem: {
@@ -534,7 +534,7 @@ export const DEFAULT_CONTENT = {
       tech: ['Python', 'Pandas', 'Matplotlib'],
       github: 'https://github.com/yourusername/student-analyser',
       demo: '',
-      emoji: '📈',
+      logo: '/src/assets/react.svg', // Placeholder logo
       featured: false,
       caseStudy: {
         problem: {
@@ -639,7 +639,7 @@ export const DEFAULT_CONTENT = {
       tech: ['React', 'Firebase', 'Tailwind CSS'],
       github: 'https://github.com/yourusername/bug-tracker',
       demo: 'https://bug-tracker-demo.netlify.app',
-      emoji: '🐛',
+      logo: '/src/assets/react.svg', // Placeholder logo
       featured: false,
       caseStudy: {
         problem: {

@@ -1,9 +1,62 @@
+import heroImg from '../../assets/hero.png';
+import { useEffect, useState } from 'react';
 import { useContent } from '../../hooks/useContent';
 import { Link } from 'react-router-dom';
+
+const HERO_NAME_TYPED_KEY = 'heroNameTypedOnce';
 
 export default function Hero() {
   const { content } = useContent();
   const { name, tagline, heroBio, github, linkedin } = content.general;
+  const [typedName, setTypedName] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+
+  useEffect(() => {
+    if (!name) {
+      setTypedName('');
+      setIsTyping(false);
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let shouldAnimate = true;
+
+    try {
+      shouldAnimate = sessionStorage.getItem(HERO_NAME_TYPED_KEY) !== 'true';
+    } catch {
+      shouldAnimate = true;
+    }
+
+    if (prefersReducedMotion || !shouldAnimate) {
+      setTypedName(name);
+      setIsTyping(false);
+      return;
+    }
+
+    let currentIndex = 0;
+    setIsTyping(true);
+    setTypedName('');
+
+    const timer = window.setInterval(() => {
+      currentIndex += 1;
+      setTypedName(name.slice(0, currentIndex));
+
+      if (currentIndex >= name.length) {
+        window.clearInterval(timer);
+        setIsTyping(false);
+        try {
+          sessionStorage.setItem(HERO_NAME_TYPED_KEY, 'true');
+        } catch {
+          // Ignore storage write failures (private mode, blocked storage, etc.)
+        }
+      }
+    }, 95);
+
+    return () => {
+      window.clearInterval(timer);
+      setIsTyping(false);
+    };
+  }, [name]);
 
   return (
     <section className="min-h-screen flex items-center bg-white pt-16">
@@ -15,7 +68,9 @@ export default function Hero() {
             </p>
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 leading-[1.05] tracking-tight mb-4">
               Hi, I'm<br />
-              <span className="text-burgundy-800">{name}</span>
+              <span className="text-burgundy-800">
+                {typedName}
+              </span>
             </h1>
             <p className="text-lg text-gray-500 font-normal mt-6 mb-4">{tagline}</p>
             <p className="text-gray-400 text-base max-w-lg mb-10 leading-relaxed">{heroBio}</p>
@@ -46,11 +101,16 @@ export default function Hero() {
           </div>
 
           <div className="flex-shrink-0 relative">
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-burgundy-50 flex items-center justify-center relative overflow-hidden">
+            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-burgundy-50 flex items-center justify-center relative overflow-hidden shadow-lg">
               <div className="absolute inset-0 bg-gradient-to-br from-burgundy-100 to-burgundy-200 opacity-60" />
-              <span className="relative text-8xl select-none">👨‍💻</span>
+              <img
+                src={heroImg}
+                alt="Portrait of Naledi Tshapi"
+                className="relative w-56 h-56 md:w-72 md:h-72 object-cover rounded-full border-4 border-white shadow-md z-10"
+                draggable={false}
+              />
             </div>
-            <div className="absolute -bottom-2 -right-2 w-20 h-20 rounded-full border-4 border-white bg-burgundy-800 flex items-center justify-center">
+            <div className="absolute -bottom-2 -right-2 w-20 h-20 rounded-full border-4 border-white bg-burgundy-800 flex items-center justify-center shadow-md">
               <span className="text-white text-xs font-bold text-center leading-tight">IS<br />2025</span>
             </div>
           </div>
