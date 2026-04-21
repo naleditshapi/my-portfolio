@@ -1,10 +1,36 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContent } from '../hooks/useContent';
 import Hero from "../components/sections/Hero";
 
 function FeaturedProject({ project }) {
+  const navigate = useNavigate();
+  const projectSlug = project.title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+  const hasCaseStudy = Boolean(project.caseStudy);
+
+  const openCaseStudy = () => {
+    if (hasCaseStudy) {
+      navigate(`/projects/${projectSlug}`);
+    }
+  };
+
+  const handleCardKeyDown = (event) => {
+    if (!hasCaseStudy) return;
+
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openCaseStudy();
+    }
+  };
+
   return (
-    <div className="group bg-white rounded-2xl p-7 border border-gray-100 hover:border-transparent hover:shadow-lg transition-all duration-300 flex flex-col">
+    <div
+      className={`group bg-white rounded-2xl p-7 border border-gray-100 hover:border-transparent hover:shadow-lg transition-all duration-300 flex flex-col ${hasCaseStudy ? 'cursor-pointer' : ''}`}
+      onClick={openCaseStudy}
+      onKeyDown={handleCardKeyDown}
+      role={hasCaseStudy ? 'button' : undefined}
+      tabIndex={hasCaseStudy ? 0 : -1}
+      aria-label={hasCaseStudy ? `Open case study for ${project.title}` : undefined}
+    >
       <div className="flex items-start justify-between gap-3 mb-4">
         <span className="text-3xl">{project.emoji}</span>
         <span className="text-xs font-semibold px-3 py-1 rounded-full bg-burgundy-50 text-burgundy-700">
@@ -21,10 +47,12 @@ function FeaturedProject({ project }) {
       <div className="flex gap-4 pt-4 border-t border-gray-50">
         {project.github && (
           <a href={project.github} target="_blank" rel="noopener noreferrer"
+            onClick={(event) => event.stopPropagation()}
             className="text-xs text-gray-400 hover:text-gray-800 font-medium transition-colors">GitHub →</a>
         )}
         {project.demo && (
           <a href={project.demo} target="_blank" rel="noopener noreferrer"
+            onClick={(event) => event.stopPropagation()}
             className="text-xs text-burgundy-700 hover:text-burgundy-900 font-medium transition-colors">Live Demo →</a>
         )}
       </div>

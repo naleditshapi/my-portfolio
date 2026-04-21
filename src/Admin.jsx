@@ -153,7 +153,7 @@ export default function Admin({ onClose }) {
   return (
     <div className="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-burgundy-900 rounded-t-2xl">
+        <div className="shrink-0 flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-burgundy-900 rounded-t-2xl">
           <h2 className="text-white font-bold text-lg">Portfolio Admin</h2>
           <div className="flex items-center gap-3">
             <button
@@ -170,7 +170,7 @@ export default function Admin({ onClose }) {
           </div>
         </div>
 
-        <div className="flex border-b border-gray-100 px-6 gap-1 overflow-x-auto">
+        <div className="shrink-0 flex border-b border-gray-100 px-6 gap-1 overflow-x-auto bg-white">
           {TABS.map(tab => (
             <button
               key={tab}
@@ -186,7 +186,7 @@ export default function Admin({ onClose }) {
           ))}
         </div>
 
-        <div className="overflow-y-auto flex-1 p-6">
+        <div className="min-h-0 overflow-y-auto flex-1 p-6">
           {activeTab === 'general' && (
             <div className="space-y-4">
               <SectionHeader>General / Profile</SectionHeader>

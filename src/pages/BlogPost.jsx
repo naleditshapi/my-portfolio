@@ -15,12 +15,6 @@ export default function BlogPost() {
       {/* Hero */}
       <div className="bg-gray-50 border-b border-gray-100 pt-16 pb-14">
         <div className="max-w-3xl mx-auto px-6">
-          <Link to="/blog" className="inline-flex items-center gap-2 text-xs font-medium text-gray-400 hover:text-gray-700 transition-colors mb-8">
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-            </svg>
-            All posts
-          </Link>
 
           <div className="flex items-center gap-3 mb-5">
             <span className="text-sm text-gray-400">{post.date}</span>

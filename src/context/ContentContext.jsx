@@ -11,6 +11,40 @@ const defaultContextValue = {
 // Export the context itself so useContent hook can access it
 export const ContentContext = createContext(defaultContextValue);
 
+function toProjectSlug(title = '') {
+  return title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+}
+
+function mergeProjects(savedProjects) {
+  if (!Array.isArray(savedProjects)) {
+    return DEFAULT_CONTENT.projects;
+  }
+
+  const defaultProjectsBySlug = new Map(
+    DEFAULT_CONTENT.projects.map((project) => [toProjectSlug(project.title), project])
+  );
+
+  const mergedSavedProjects = savedProjects.map((savedProject) => {
+    const defaultProject = defaultProjectsBySlug.get(toProjectSlug(savedProject.title)) || {};
+
+    return {
+      ...defaultProject,
+      ...savedProject,
+      tech: Array.isArray(savedProject.tech)
+        ? savedProject.tech
+        : (Array.isArray(defaultProject.tech) ? defaultProject.tech : []),
+      caseStudy: savedProject.caseStudy ?? defaultProject.caseStudy,
+    };
+  });
+
+  const savedSlugs = new Set(mergedSavedProjects.map((project) => toProjectSlug(project.title)));
+  const missingDefaultProjects = DEFAULT_CONTENT.projects.filter(
+    (project) => !savedSlugs.has(toProjectSlug(project.title))
+  );
+
+  return [...mergedSavedProjects, ...missingDefaultProjects];
+}
+
 function loadContent() {
   try {
     const saved = localStorage.getItem('portfolioContent');
@@ -20,7 +54,7 @@ function loadContent() {
       general:      { ...DEFAULT_CONTENT.general,      ...parsed.general },
       about:        { ...DEFAULT_CONTENT.about,        ...parsed.about },
       skills:       parsed.skills       || DEFAULT_CONTENT.skills,
-      projects:     parsed.projects     || DEFAULT_CONTENT.projects,
+      projects:     mergeProjects(parsed.projects),
       resume:       { ...DEFAULT_CONTENT.resume,       ...parsed.resume },
       testimonials: parsed.testimonials || DEFAULT_CONTENT.testimonials,
       blog:         parsed.blog         || DEFAULT_CONTENT.blog,

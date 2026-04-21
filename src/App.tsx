@@ -34,6 +34,8 @@ function PageLoader() {
 function PortfolioApp() {
   const [adminOpen, setAdminOpen] = useState(false);
 
+  const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
+
   return (
     <div className="font-sans text-gray-800 min-h-screen flex flex-col">
       <Navbar onAdminTrigger={() => setAdminOpen(true)} />
@@ -48,6 +50,7 @@ function PortfolioApp() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:id" element={<ProjectDetail />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
@@ -60,6 +63,7 @@ function PortfolioApp() {
     </div>
   );
 }
+
 
 export default function App() {
   return (
